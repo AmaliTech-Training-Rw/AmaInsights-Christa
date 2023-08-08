@@ -11,25 +11,52 @@ const recordedActions = [];
 
 app.get("/", (req, res) => {
   res.send(`
-    <html>
-      <head>
-        <title>Page Tracker</title>
-      </head>
-      <body>
-        <h1>Welcome to Page Tracker</h1>
-        <button id="buttonButton" onclick="recordAction('button_click')">Button Click</button>
-        <script>
-          function recordAction(action) {
-            // Send AJAX request to record user action
-            fetch('/recordAction', {
-              method: 'POST',
-              body: JSON.stringify({ action }),
-              headers: { 'Content-Type': 'application/json' }
-            });
-          }
-        </script>
-      </body>
-    </html>
+  <html>
+  <head>
+    <title>Page Tracker</title>
+    <style>
+      body {
+        background-color: #DBA628;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+      }
+      .title {
+        color: #753918;
+        text-align: center;
+        padding-top: 20px;
+      }
+      #buttonButton {
+        background-color: #FCF7EA;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">
+      <h1>Welcome to Page Tracker</h1>
+    </div>
+    <button id="buttonButton" onclick="recordAction('button_click')">Button Click</button>
+    <script>
+      function recordAction(action) {
+        // Send AJAX request to record user action
+        fetch('/recordAction', {
+          method: 'POST',
+          body: JSON.stringify({ action }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+    </script>
+  </body>
+</html>
   `);
 });
 
