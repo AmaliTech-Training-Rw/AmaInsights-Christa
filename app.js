@@ -100,7 +100,7 @@ app.get("/viewActions", (req, res) => {
   res.json(recordedActions);
 });
 
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
