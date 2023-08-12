@@ -14,6 +14,13 @@ app.get("/", (req, res) => {
   <html>
   <head>
     <title>Page Tracker</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WFWQQL6N');</script>
+    <!-- End Google Tag Manager -->
     <style>
       body {
         background-color: #DBA628;
@@ -38,6 +45,12 @@ app.get("/", (req, res) => {
         cursor: pointer;
         margin-top: 20px;
       }
+      #buttonButton {
+        transition: background-color 0.3s; 
+      }
+      #buttonButton.clicked {
+        background-color: #FABF75; 
+      }
     </style>
   </head>
   <body>
@@ -45,7 +58,12 @@ app.get("/", (req, res) => {
       <h1>Welcome to Page Tracker</h1>
     </div>
     <button id="buttonButton" onclick="recordAction('button_click')">Button Click</button>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFWQQL6N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <script>
+      // Define the recordAction function
       function recordAction(action) {
         // Send AJAX request to record user action
         fetch('/recordAction', {
@@ -53,6 +71,13 @@ app.get("/", (req, res) => {
           body: JSON.stringify({ action }),
           headers: { 'Content-Type': 'application/json' }
         });
+        const button = document.getElementById('buttonButton');
+        button.classList.add('clicked');
+    
+        // Remove the "clicked" class after a short delay to reset the button style
+        setTimeout(() => {
+          button.classList.remove('clicked');
+        }, 300);
       }
     </script>
   </body>
