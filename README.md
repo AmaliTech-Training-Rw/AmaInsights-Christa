@@ -55,3 +55,6 @@ Record User Action: POST /recordAction
 ```bash
 View Recorded Actions: GET /viewActions
 ```
+
+## You can access the deployed version of this project here:
+https://google-tag-management-node-js.onrender.com
